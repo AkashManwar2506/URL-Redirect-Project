@@ -21,7 +21,7 @@ googlerouter.get(
     function (req, res) {
         let user = req.user;
 
-        res.redirect(`http://localhost:5500/frontend/dashboard.html?id=${user._id}`);
+        res.redirect(`http://localhost:5500/frontend/dashboard.html?id=${user._id}&name=${user.name}`);
     }
 );
 
