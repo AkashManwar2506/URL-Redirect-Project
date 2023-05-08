@@ -18,11 +18,11 @@ userRouter.get("/allusers", async (req, res)=>{
 
 userRouter.post("/signup", async (req, res)=>{
     try {
-        const {firstname, lastname, email, password}= req.body
+        const {name, email, password}= req.body
         const isUser = await UserModel.findOne({email})
         if (isUser) return res.send({msg: "User already present please login"})
         const hashedPass = bcrypt.hashSync(password, 5)
-        const user = new UserModel({firstname, lastname, email, password: hashedPass})
+        const user = new UserModel({name, email, password: hashedPass})
 
         await user.save()
         res.send(user);
