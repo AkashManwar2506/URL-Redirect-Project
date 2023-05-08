@@ -3,7 +3,7 @@ const urlRouter = express.Router()
 const url = require("../models/urlmodel");
 const authenticate = require("../middelwares/authentication");
 
-urlRouter.post("/assign", authenticate, async(req, res)=>{
+urlRouter.post("/assign", async(req, res)=>{
     try {
         const {longurl} = req.body;
         if (!longurl) return res.json({msg: "Please Provide URL"})
