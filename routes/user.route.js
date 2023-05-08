@@ -4,6 +4,8 @@ const bcrypt = require("bcrypt")
 const blacklist = require("../models/blacklisting")
 const authenticate = require("../middelwares/authentication")
 const jwt = require("jsonwebtoken")
+const cors = require("cors")
+app.use(cors({origin:"*"}));
 
 
 userRouter.get("/allusers", async (req, res)=>{
