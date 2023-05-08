@@ -18,7 +18,7 @@ userRouter.get("/allusers", async (req, res)=>{
 
 userRouter.get("/:id", async (req, res)=>{
     try {
-        const UserData = await UserModel.find({_id :req.params.id})
+        const UserData = await UserModel.findOne({_id :req.params.id})
         res.json(UserData)
     } catch (error) {
         console.log(error)
