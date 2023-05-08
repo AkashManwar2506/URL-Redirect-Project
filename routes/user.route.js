@@ -16,6 +16,16 @@ userRouter.get("/allusers", async (req, res)=>{
     }
 })
 
+userRouter.get("/:id", async (req, res)=>{
+    try {
+        const UserData = await UserModel.find({_id :req.params.id})
+        res.json(UserData)
+    } catch (error) {
+        console.log(error)
+        res.status(400).send({"msg": "Erron in getting user"})
+    }
+})
+
 userRouter.post("/signup", async (req, res)=>{
     try {
         const {name, email, password}= req.body
@@ -31,6 +41,7 @@ userRouter.post("/signup", async (req, res)=>{
         res.status(400).send({msg:"Error while registering"}, error)
     }
 })
+
 
 userRouter.post("/login", async (req, res)=>{
     try {
