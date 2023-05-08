@@ -15,6 +15,17 @@ urlRouter.post("/assign", authenticate, async(req, res)=>{
         res.send(newurl)
     } catch (error) {
         console.log(error)
+        res.send(error)
+    }
+})
+
+urlRouter.get("/:id", async(req, res)=>{
+    try {
+        const userUrls = await url.find({author: req.params.id})
+        res.json(userUrls)
+    } catch (error) {
+        console.log(error)
+        res.send(error)
     }
 })
 
