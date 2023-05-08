@@ -46,7 +46,7 @@ userRouter.post("/login", async (req, res)=>{
         res.cookie("normaltoken", normaltoken, {maxAge: 1000*60*60})
         res.cookie("refreshtoken", refreshtoken, {maxAge: 1000*60*60*6})
 
-        res.send({msg: "Login Successful"})
+        res.json({msg: "Login Successful", id: user._id, name: user.name})
     } catch (error) {
         console.log(error)
         res.send({msg:"Error while loging in"})
