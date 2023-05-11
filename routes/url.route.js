@@ -29,6 +29,16 @@ urlRouter.get("/:id", async(req, res)=>{
     }
 })
 
+urlRouter.delete("/:id", async(req, res)=>{
+    try {
+        await url.findOneAndDelete({_id: req.params.id})
+        res.json({msg: "URL Deleted"})
+    } catch (error) {
+        console.log(error)
+        res.send(error)
+    }
+})
+
 urlRouter.get("/", async(req, res)=>{
     try {
         const totalUrls = await url.find({})
