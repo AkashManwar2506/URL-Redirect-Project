@@ -29,7 +29,7 @@ urlRouter.get("/:id", async(req, res)=>{
     }
 })
 
-urlRouter.delete("/:id", async(req, res)=>{
+urlRouter.get("/delete/:id", async(req, res)=>{
     try {
         await url.findOneAndDelete({_id: req.params.id})
         res.json({msg: "URL Deleted"})
